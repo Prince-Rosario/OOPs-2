@@ -1,0 +1,12 @@
+[
+  {
+    "Name": "cs",
+    "Hours": 20,
+    "Id": 0
+  },
+  {
+    "Name": "English",
+    "Hours": 30,
+    "Id": 1
+  }
+]

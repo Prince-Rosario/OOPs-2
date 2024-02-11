@@ -1,0 +1,34 @@
+[
+  {
+    "Name": "Group 1",
+    "GroupId": 1,
+    "Disciplines": [
+      {
+        "Name": "English",
+        "Hours": 30,
+        "Id": 1
+      }
+    ]
+  },
+  {
+    "Name": "Group 2",
+    "GroupId": 2,
+    "Disciplines": [
+      {
+        "Name": "cs",
+        "Hours": 20,
+        "Id": 0
+      }
+    ]
+  },
+  {
+    "Name": "Group 3",
+    "GroupId": 3,
+    "Disciplines": []
+  },
+  {
+    "Name": "Testgrp",
+    "GroupId": 4,
+    "Disciplines": []
+  }
+]

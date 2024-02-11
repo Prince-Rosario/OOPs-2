@@ -1,0 +1,54 @@
+[
+  {
+    "FirstName": "prince",
+    "StudentId": 1,
+    "StudentGroup": {
+      "Name": null,
+      "GroupId": 1,
+      "Disciplines": []
+    },
+    "Grades": [],
+    "LastName": "rosario",
+    "SecondName": "",
+    "DateOfBirth": "2003-10-03T00:00:00",
+    "Email": "prince@1.com",
+    "Password": "pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=",
+    "IsAdministrator": true,
+    "Id": 1,
+    "UserRole": "Student"
+  },
+  {
+    "ProfId": 2,
+    "DiciplineId": [
+      1
+    ],
+    "FirstName": "Janani",
+    "LastName": "Rosario",
+    "SecondName": "",
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Email": "jan@ni.com",
+    "Password": "pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=",
+    "IsAdministrator": true,
+    "Id": 2,
+    "UserRole": "Teacher",
+    "StudentGroup": null
+  },
+  {
+    "FirstName": "Kevin",
+    "StudentId": 5,
+    "StudentGroup": {
+      "Name": null,
+      "GroupId": 3,
+      "Disciplines": []
+    },
+    "Grades": [],
+    "LastName": "kevnnnn",
+    "SecondName": "",
+    "DateOfBirth": "0001-01-01T00:00:00",
+    "Email": "kev@in.com",
+    "Password": "pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=",
+    "IsAdministrator": true,
+    "Id": 0,
+    "UserRole": "Student"
+  }
+]

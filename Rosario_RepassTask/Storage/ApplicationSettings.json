@@ -1,0 +1,11 @@
+{
+  "AdminInfo": {
+    "email": "admin@hits.tsu.ru",
+    "password": "SuperSecurePass123",
+    "firstname": "Admin",
+    "lastname": "Adminovich",
+    "secondname": "Adminov",
+    "dateofbirth": "01.01.1970",
+    "role": "teacher"
+  }
+}
