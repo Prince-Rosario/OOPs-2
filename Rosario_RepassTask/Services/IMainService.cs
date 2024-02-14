@@ -8,6 +8,7 @@
 
         public void LoadProfessors();
         public void LoadStudents();
+
         //public void CreateMark(MarkValues mark, int studentId, int disciplineId);
         public void EditMark(MarkValues mark, int studentId, int disciplineId);
         public List<Student> GetDisciplineStudents(int disciplineId);

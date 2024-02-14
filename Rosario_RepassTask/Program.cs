@@ -157,7 +157,6 @@ namespace Rosario_repassTask
         //TODO
         static void DisplayUserInfo()
         {
-
             if (Storage.Instance.ActiveUser == null)
             {
                 Console.WriteLine("No active user");
@@ -222,9 +221,7 @@ namespace Rosario_repassTask
                         Console.WriteLine("Invalid role");
                         break;
                 }
-
             }
-
         }
 
         static void RegistrationMenu()
@@ -627,7 +624,6 @@ namespace Rosario_repassTask
                         break;
                 }
             }
-
         }
 
         // Admin Menu

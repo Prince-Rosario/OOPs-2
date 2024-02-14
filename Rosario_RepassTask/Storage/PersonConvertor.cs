@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System.Reflection;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Reflection;
 
 namespace Rosario_repassTask
 {
@@ -60,7 +60,10 @@ namespace Rosario_repassTask
                             if (prop.Name == "Grades" && person is Student)
                             {
                                 // Handle Grades list differently
-                                jObject.Add(prop.Name, JToken.FromObject(((Student)person).Grades, serializer));
+                                jObject.Add(
+                                    prop.Name,
+                                    JToken.FromObject(((Student)person).Grades, serializer)
+                                );
                             }
                             else
                             {
@@ -76,11 +79,5 @@ namespace Rosario_repassTask
                 throw new Exception("Expected Person object value");
             }
         }
-
-
-
-
-
-
     }
 }

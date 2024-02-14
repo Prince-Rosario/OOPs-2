@@ -16,7 +16,7 @@ namespace Rosario_repassTask
 
         public Discipline CreateDiscipline(int id, string name, int hours)
         {
-            Discipline discipline = new Discipline(name, hours) {Id = id};
+            Discipline discipline = new Discipline(name, hours) { Id = id };
 
             // Add the new discipline to the list of disciplines in the Storage class
             Storage.Disciplines.Add(discipline);
@@ -30,12 +30,11 @@ namespace Rosario_repassTask
         public void LoadProfessors()
         {
             // Load the users from the users.json file
-            Person [] users = Storage.LoadUsersData();
+            Person[] users = Storage.LoadUsersData();
 
             // Filter the users to get only the professors and add them to the _professors list
             _professors = users.OfType<Professor>().ToList();
         }
-
 
         public void LoadStudents()
         {
@@ -66,29 +65,29 @@ namespace Rosario_repassTask
             discipline.AssignTeacher(professor);
         }
 
-      /*  public void CreateMark(MarkValues mark, int studentId, int disciplineId)
-        {
-            // Find the student with the given id
-            Student student = _students.Find(s => s.StudentId == studentId);
-            if (student == null)
-            {
-                Console.WriteLine("No such Student Found");
-                return;
-            }
-
-            // Find the discipline with the given id
-            Discipline discipline = disciplines.Find(d => d.GetId() == disciplineId);
-            if (discipline == null)
-            {
-                Console.WriteLine("No such Discipline Found");
-                return;
-            }
-
-            //Create a new mark and add it to the student's marks
-            Mark newMark = new Mark { markValue = mark, discipline = discipline, };
-            student.AddOrEditMark(newMark);
-        }
-        */
+        /*  public void CreateMark(MarkValues mark, int studentId, int disciplineId)
+          {
+              // Find the student with the given id
+              Student student = _students.Find(s => s.StudentId == studentId);
+              if (student == null)
+              {
+                  Console.WriteLine("No such Student Found");
+                  return;
+              }
+  
+              // Find the discipline with the given id
+              Discipline discipline = disciplines.Find(d => d.GetId() == disciplineId);
+              if (discipline == null)
+              {
+                  Console.WriteLine("No such Discipline Found");
+                  return;
+              }
+  
+              //Create a new mark and add it to the student's marks
+              Mark newMark = new Mark { markValue = mark, discipline = discipline, };
+              student.AddOrEditMark(newMark);
+          }
+          */
         public void EditMark(MarkValues mark, int studentId, int disciplineId)
         {
             throw new NotImplementedException();
@@ -105,7 +104,8 @@ namespace Rosario_repassTask
                 return students;
             }
 
-            Group groupWithDiscipline = GetAllGroups().FirstOrDefault(g => g.Disciplines.Any(d => d.Id == disciplineId));
+            Group groupWithDiscipline = GetAllGroups()
+                .FirstOrDefault(g => g.Disciplines.Any(d => d.Id == disciplineId));
 
             if (groupWithDiscipline == null)
             {
@@ -116,7 +116,11 @@ namespace Rosario_repassTask
             foreach (var user in Storage.Instance.Users)
             {
                 Student student = user as Student;
-                if (student != null && student.StudentGroup != null && student.StudentGroup.GroupId == groupWithDiscipline.GroupId)
+                if (
+                    student != null
+                    && student.StudentGroup != null
+                    && student.StudentGroup.GroupId == groupWithDiscipline.GroupId
+                )
                 {
                     students.Add(student);
                 }
@@ -128,9 +132,7 @@ namespace Rosario_repassTask
             }
 
             return students;
-
         }
-
 
         public List<Professor> GetDisciplineTeachers(int disciplineId)
         {
@@ -143,7 +145,6 @@ namespace Rosario_repassTask
             }
             return professors;
         }
-
 
         public List<Discipline> GetDisciplinesForGroup(Group group)
         {
@@ -181,7 +182,6 @@ namespace Rosario_repassTask
             return professor;
         }
 
-
         public Student GetStudentById(int id)
         {
             // Find the student with the given id
@@ -194,7 +194,6 @@ namespace Rosario_repassTask
             }
             return null;
         }
-
 
         public List<Professor> GetAllTeachers()
         {
@@ -218,7 +217,6 @@ namespace Rosario_repassTask
             }
             return foundDiscipline;
         }
-
 
         public List<Group> GetAllGroups()
         {
@@ -257,13 +255,19 @@ namespace Rosario_repassTask
             foreach (var user in Storage.Instance.Users)
             {
                 Student student = user as Student;
-                if (student != null && student.StudentGroup != null && student.StudentGroup.GroupId == groupId)
+                if (
+                    student != null
+                    && student.StudentGroup != null
+                    && student.StudentGroup.GroupId == groupId
+                )
                 {
                     student.StudentGroup.Disciplines.Add(discipline);
                 }
             }
 
-            Console.WriteLine($"Discipline '{disciplineId}' assigned to group '{groupId}' successfully");
+            Console.WriteLine(
+                $"Discipline '{disciplineId}' assigned to group '{groupId}' successfully"
+            );
             Storage.SaveGroupsData(GetAllGroups().ToArray());
         }
 
@@ -277,7 +281,6 @@ namespace Rosario_repassTask
             }
             return group;
         }
-
 
         public List<Mark> GetGradesForStudent()
         {
@@ -322,7 +325,6 @@ namespace Rosario_repassTask
             Storage.SaveAllData();
         }
 
-
         public void SetMarkForStudent(Discipline discipline, Student student, MarkValues markValue)
         {
             // Create a new mark
@@ -334,8 +336,5 @@ namespace Rosario_repassTask
             // Update the student in the storage
             Storage.SaveUsersData(Storage.Instance.Users.ToArray());
         }
-
-
-
     }
 }

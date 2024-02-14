@@ -25,7 +25,6 @@ namespace Rosario_repassTask
             student = stud;
         }
 
-
         public string GetMarkName()
         {
             return markValue.ToString();
