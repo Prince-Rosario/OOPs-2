@@ -4,8 +4,10 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 
+
 namespace Rosario_repassTask
 {
+    using System.Configuration;
     public class Storage
     {
         private static Storage? _Storage = null;
@@ -17,31 +19,25 @@ namespace Rosario_repassTask
 
         public static List<Discipline> Disciplines { get; set; }
 
+
         // Define the path to the Storage directory
-        private static readonly string StorageDirectory = Path.Combine(
-            AppDomain.CurrentDomain.BaseDirectory,
-            "..\\..\\..\\Storage"
-        );
+        // Define a method to read the StorageDirectory from the storageSettings.json file
+public static string GetStorageDirectory()
+{
+    string storageSettingsJson = File.ReadAllText("Storage/storageSettings.json");
+    JObject storageSettings = JsonConvert.DeserializeObject<JObject>(storageSettingsJson);
+    return storageSettings["StorageDirectory"].ToString();
+}
 
-        // Define the path to the users.json file inside the Storage directory
-        public static readonly string UsersFilePath = Path.Combine(StorageDirectory, "users.json");
+// Use the value read from the storageSettings.json file as the storage directory
+public static string StorageDirectory = GetStorageDirectory();
 
-        // Define Path to SuperUser
-        private static readonly string SuperUserPath = Path.Combine(
-            StorageDirectory,
-            "ApplicationSettings.json"
-        );
+// Now, you can use StorageDirectory in your file paths
+public static string UsersFilePath = Path.Combine(StorageDirectory, "users.json");
+public static string GroupsFilePath = Path.Combine(StorageDirectory, "groups.json");
+public static string DisciplinesFilePath = Path.Combine(StorageDirectory, "disciplines.json");
+public static string SuperUserPath = Path.Combine(StorageDirectory, "ApplicationSettings.json");
 
-        // define the path to the groups.json file inside the Storage directory
-        private static readonly string GroupsFilePath = Path.Combine(
-            StorageDirectory,
-            "groups.json"
-        );
-
-        private static readonly string DisciplinesFilePath = Path.Combine(
-            StorageDirectory,
-            "disciplines.json"
-        );
 
         // Save users data to JSON file
         public static void SaveUsersData(Person[] users)
