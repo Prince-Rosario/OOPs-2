@@ -126,16 +126,25 @@ namespace Rosario_repassTask
         // Load groups data from JSON file
         public static Group[] LoadGroupsData()
         {
-            if (File.Exists(GroupsFilePath))
+            try
             {
-                // Read JSON data from groups.json file
-                string json = File.ReadAllText(GroupsFilePath);
-                // Deserialize JSON data to Group array
-                return JsonConvert.DeserializeObject<Group[]>(json) ?? new Group[0];
+                if (File.Exists(GroupsFilePath))
+                {
+                    // Read JSON data from groups.json file
+                    string json = File.ReadAllText(GroupsFilePath);
+                    // Deserialize JSON data to Group array
+                    return JsonConvert.DeserializeObject<Group[]>(json) ?? new Group[0];
+                }
+                else
+                {
+                    Console.WriteLine($"Groups file does not exist at path: {GroupsFilePath}");
+                    return new Group[0]; // Return an empty array if file doesn't exist
+                }
             }
-            else
+            catch (Exception e)
             {
-                return new Group[0]; // Return an empty array if file doesn't exist
+                Console.WriteLine($"Error loading Groups.JSON file: {e.Message}");
+                return new Group[0];
             }
         }
 
